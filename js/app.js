@@ -88,6 +88,26 @@ function addPostToTable(post) {
 
 }
 
+async function updatePost(id, title, body) {
+
+    try {
+
+        const response = await fetch(`${API}/posts/${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id, title, body, userId: 1})
+        });
+
+        const updated = await response.json();
+        return updated;
+
+    } catch(e) {
+        console.log("Erro ao atualizar o post: ",e);
+    }
+
+}
 
 
 
@@ -117,6 +137,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     M.Modal.init(modals);
 
+    //Evento para criar novo post
     document.querySelector("#save-post").addEventListener("click", async () => {
 
         const title = document.querySelector("#post-title").value;
@@ -135,5 +156,70 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         M.updateTextFields();
     });
+
+    //Evento para editar um post 
+    document.querySelector("#posts-table").addEventListener("click", async (e) => {
+
+        if(e.target.classList.contains("edit-btn")) {
+
+            const id = e.target.dataset.id;
+
+            const table = window.dataTableInstance;
+            const row = table.row($(e.target).closest("tr"));
+            const data = row.data();
+
+            document.querySelector("#edit-id").value = id;
+            document.querySelector("#edit-title").value = data[1];
+            document.querySelector("#edit-body").value = data[2];
+
+            M.updateTextFields();
+
+            const modal = M.Modal.getInstance(document.querySelector("#edit-modal"));
+            modal.open();
+
+        }
+
+    });
+
+    //Evento para atualizar o post quando clicar no botão atualizar
+    document.querySelector("#update-post").addEventListener("click", async () => {
+
+        const id = document.querySelector("#edit-id").value;
+        const title = document.querySelector("#edit-title").value;
+        const body = document.querySelector("#edit-body").value;
+    
+        if (!title || !body) {
+            M.toast({html: "Preencha todos os campos!"});
+            return;
+        }
+    
+        const updated = await updatePost(id, title, body);
+    
+        // atualizar na tabela
+        const table = window.dataTableInstance;
+    
+        // encontra a linha pela coluna ID
+        table.rows().every(function() {
+            if (this.data()[0] == id) {
+    
+                this.data([
+                    id,
+                    updated.title,
+                    updated.body,
+                    `
+                        <button class="btn-small blue edit-btn" data-id="${id}">Editar</button>
+                        <button class="btn-small red delete-btn" data-id="${id}">Excluir</button>
+                    `
+                ]);
+    
+            }
+        });
+    
+        table.draw(false);
+    
+        M.toast({html: "Post atualizado!"});
+    });
+
+
 });
 

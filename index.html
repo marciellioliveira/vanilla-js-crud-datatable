@@ -32,13 +32,13 @@
             </table>
         </div>
 
+        <!-- Modal Cadastrar -->
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large pink darken-1 modal-trigger" href="#create-modal">
               <i class="large material-icons">add</i>
             </a>
           </div>
           
-          <!-- Modal - Cadastrar -->
           <div id="create-modal" class="modal">
             <div class="modal-content">
               <h4>Novo Post</h4>
@@ -61,6 +61,32 @@
               </button>
             </div>
           </div>
+
+          <!-- Modal Editar -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+            <h4>Editar Post</h4>
+        
+            <div class="input-field">
+                <input id="edit-title" type="text">
+                <label for="edit-title" class="active">Título</label>
+            </div>
+        
+            <div class="input-field">
+                <textarea id="edit-body" class="materialize-textarea"></textarea>
+                <label for="edit-body" class="active">Conteúdo</label>
+            </div>
+        
+            <!-- guardar o id escondido -->
+            <input type="hidden" id="edit-id">
+            </div>
+        
+            <div class="modal-footer">
+            <button id="update-post" class="waves-effect waves-light btn blue">
+                Atualizar
+            </button>
+            </div>
+        </div>  
           
 
       <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
