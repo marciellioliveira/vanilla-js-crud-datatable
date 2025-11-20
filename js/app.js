@@ -126,6 +126,61 @@ async function deletePost(id) {
 
 }
 
+
+function exportToExcel(rows) {
+
+    if(!rows || rows.length === 0) {
+
+        alert("Nenhum dado para exportar");
+        return;
+
+    }
+
+    //Criando conteudo em Excel em formato de tabela HTML 
+    let xlsContent = `
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Conteúdo</th>
+            </tr>
+    `;
+
+    rows.forEach(row => {
+        xlsContent += `
+            <tr>
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td>${row[2]}</td>
+            </tr>
+        `;
+    });
+
+    xlsContent += "</table>";
+
+    //Criando o arquivo
+    const blob = new Blob([xlsContent], {
+        type: "application/vnd.ms-excel"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+
+    a.download = "posts.xls";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const posts = await fetchPosts();
 
@@ -138,8 +193,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         info: true,
         paging: true,
         ordering: true,
-        responsive: true
+        responsive: true,
+        layout: {
+            topStart: null,
+            top: 'search',             
+            topEnd: document.getElementById("extra-buttons") 
+        }
+    });  
+        
+
+    //Criando o botão de export do lado do search e adicionando no html
+    const exportBtn = document.createElement("button");
+    exportBtn.textContent = "Exportar planilha";
+    exportBtn.classList.add("btn-small", "green");
+
+    exportBtn.addEventListener("click", () => {
+
+        const rows = window.dataTableInstance.rows().data().toArray();
+        exportToExcel(rows);
+
     });
+
+    document.getElementById("extra-buttons").appendChild(exportBtn);
 
     /*$('#posts-table').DataTable({
         info: true,
