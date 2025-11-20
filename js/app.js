@@ -109,9 +109,22 @@ async function updatePost(id, title, body) {
 
 }
 
+async function deletePost(id) {
 
+    try {
 
+        const response = await fetch(`${API}/posts/${id}`, {
+            method: "DELETE"
+        });
 
+        return response.ok;
+
+    } catch(e) {
+        console.log("Erro ao deletar: ", e);
+        return false;
+    }
+
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
     const posts = await fetchPosts();
@@ -220,6 +233,41 @@ document.addEventListener("DOMContentLoaded", async () => {
         M.toast({html: "Post atualizado!"});
     });
 
+
+    //Botão Delete
+    document.querySelector("#posts-table").addEventListener("click", async (e) => {
+
+        if(e.target.classList.contains("delete-btn")) {
+
+            const id = e.target.dataset.id;
+
+            if(!confirm(`Tem certeza de que deseja excluir o post ${id}?`)) {
+                return;
+            }
+
+            const deleted = await deletePost(id);
+
+            if(deleted) {
+
+                const table = window.dataTableInstance;
+
+                table.rows().every(function () {
+                    
+                    if(this.data()[0] == id) {
+                        this.remove();
+                    }
+
+                });
+
+                table.draw(false);
+
+                M.toast({html: "Post excluído com sucesso"});
+
+            }
+
+        }
+
+    });
 
 });
 
