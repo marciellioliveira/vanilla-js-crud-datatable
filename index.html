@@ -32,7 +32,36 @@
             </table>
         </div>
 
-       
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large pink darken-1 modal-trigger" href="#create-modal">
+              <i class="large material-icons">add</i>
+            </a>
+          </div>
+          
+          <!-- Modal - Cadastrar -->
+          <div id="create-modal" class="modal">
+            <div class="modal-content">
+              <h4>Novo Post</h4>
+          
+              <div class="input-field">
+                <input id="post-title" type="text">
+                <label for="post-title">Título</label>
+              </div>
+          
+              <div class="input-field">
+                <textarea id="post-body" class="materialize-textarea"></textarea>
+                <label for="post-body">Conteúdo</label>
+              </div>
+          
+            </div>
+          
+            <div class="modal-footer">
+              <button id="save-post" class="waves-effect waves-light btn pink darken-1">
+                Salvar
+              </button>
+            </div>
+          </div>
+          
 
       <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
       <script type="text/javascript" src="js/dataTables.min.js"></script>
