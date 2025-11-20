@@ -29,7 +29,7 @@ Projeto para estudo focado em consumir uma API REST (fake), manipular o DOM, usa
 
 ---
 
-## Estrutura
+## Estrutura de diretórios
 
 ```
 /css
@@ -41,6 +41,29 @@ index.html
 README.md
 ```
 
+## Imports
+
+---
+```
+<!DOCTYPE html>
+  <html lang="pt-br">
+    <head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="css/jquery.dataTables.min.css" rel="stylesheet">     
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+      <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="app.js"></script>
+    </body>
+</html>
+```
 ---
 
 ## Como rodar localmente
