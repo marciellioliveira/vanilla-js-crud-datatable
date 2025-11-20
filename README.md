@@ -1,4 +1,4 @@
-# vanilla-js-crud-datatable
+# CRUD, Vanilla JS e Datatable UI com framework Materialize
 
 CRUD de posts com **Vanilla JS**, **Materialize CSS** e **DataTables** (consumo da API JSONPlaceholder).
 
@@ -82,21 +82,10 @@ python -m http.server 5500
 
 ---
 
-## Guia rápido de implementação
-
-### Inclusão de dependências no `index.html`
-```html
-<!-- Materialize CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
-<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet"/>
-
-<!-- jQuery (DataTables depende) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<!-- DataTables JS -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<!-- Materialize JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 ## Licença
+
 MIT — uso livre para estudo e demonstrações.
+
+## 👩‍💻 Autor
+
+Desenvolvido por: **[Marcielli Oliveira](https://www.linkedin.com/in/marciellioliveira/)**
