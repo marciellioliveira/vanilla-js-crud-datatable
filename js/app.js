@@ -47,9 +47,17 @@ function renderPostsTable(posts) {
 
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const posts = await fetchPosts();
     //console.log(posts);
     renderPostsTable(posts);
+
+    
+    $('#posts-table').DataTable({
+        info: true,
+        paging: true,
+        ordering: true,
+        responsive: true
+    });
 });
+

@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;   
+    align-items: center;          
+    font-family: "Roboto", sans-serif;
+    padding: 20px; 
+}
+
+.container {
+    background: #ffffff;     
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+h4 {
+    text-align: center;
+    color: #e91ec4;     
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 14px;
+    overflow: hidden;
+    background: white;
+}
+
+table thead {
+    background: #e91ec4;    
+}
+
+table thead th {
+    padding: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+table tbody tr {
+    transition: 0.2s;
+}
+
+table tbody tr:hover {
+    background: #f1f8ff;
+}
+
+table td {
+    padding: 14px;
+    color: #455a64;
+    vertical-align: middle;
+}
+
+.edit-btn {
+    background: #2196f3 !important;
+    border-radius: 6px !important;   
+    margin-right: 5px;
+    margin-bottom: 10px;
+    text-transform: none;
+    width: 100%;
+}
+
+.delete-btn {
+    background: #f44336 !important;
+    border-radius: 6px !important;
+    width: 100%;
+    text-transform: none;
+}
+
+.edit-btn:hover {
+    background: #1e88e5 !important;
+}
+.delete-btn:hover {
+    background: #e53935 !important;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    table thead {
+        display: none; 
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 14px;
+        padding: 14px;
+    }
+
+    table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 5px;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #607d8b;
+    }
+}

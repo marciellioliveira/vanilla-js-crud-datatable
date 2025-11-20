@@ -6,6 +6,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="css/dataTables.min.css" rel="stylesheet">     
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="css/styles.css">
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
@@ -14,9 +15,9 @@
 
         <div class="container">
 
-            <h4 class="center-align">CRUD de Posts</h4>
+            <h4 class="center-align">CRUD</h4>
 
-            <table id="posts-table" class="striped highlight">
+            <table id="posts-table" class="striped highlight" data-order='[[ 1, "asc" ]]' data-page-length='25'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -26,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
